@@ -9,8 +9,27 @@
     <div class="container">
     <?php if (isset($this->session->userdata('data')->name)) {?>
         <div class="card">
-            <div class="card-body"> 
-                <?= $this->session->userdata('data')->name; ?>, se desejar fazer logout clique <a href="<?php echo base_url('logout');?>">aqui.</a>
+            <div class="card-body d-flex justify-content-between"> 
+                <div>
+                    <?= $this->session->userdata('data')->name; ?>, se desejar fazer logout clique <a href="<?php echo base_url('logout');?>">aqui.</a>
+                </div>
+                <div>
+                    <a
+                        class="btn btn-outline-info"
+                        href="<?php echo base_url('/student') ?>"> 
+                        Alunos
+                    </a>
+                    <a
+                        class="btn btn-outline-info"
+                        href="<?php echo base_url('/') ?>"> 
+                        Turmas
+                    </a>
+                    <a
+                        class="btn btn-outline-info"
+                        href="<?php echo base_url('/') ?>"> 
+                        Enturmar
+                    </a>
+                </div>
             </div>
         </div>
     <?php } ?>      
