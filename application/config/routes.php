@@ -53,6 +53,12 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+
+//Auth
+$route['login'] = "auth/index";
+$route['login/auth']['post'] = "auth/login";
+$route['logout'] = "auth/logout";
+
 //Students
 $route['student'] = "student/index";
 $route['student/create'] = "student/create";
@@ -61,7 +67,10 @@ $route['student/edit/(:num)'] = "student/edit/$1";
 $route['student/update/(:num)']['put'] = "student/update/$1";
 $route['student/delete/(:num)']['delete'] = "student/delete/$1";
 
-//Auth
-$route['login'] = "auth/index";
-$route['login/auth']['post'] = "auth/login";
-$route['logout'] = "auth/logout";
+//Classes
+$route['classes'] = "classes/index";
+$route['classes/create'] = "classes/create";
+$route['classes/store']['post'] = "classes/store";
+$route['classes/edit/(:num)'] = "classes/edit/$1";
+$route['classes/update/(:num)']['put'] = "classes/update/$1";
+$route['classes/delete/(:num)']['delete'] = "classes/delete/$1";

@@ -1,7 +1,7 @@
 <?php
  
  
-class Student_model extends CI_Model{
+class Classes_model extends CI_Model{
  
     public function __construct()
     {
@@ -14,31 +14,30 @@ class Student_model extends CI_Model{
     */
     public function get_all()
     {
-        $students = $this->db->get("students")->result();
-        return $students;
+        $classes = $this->db->get("classes")->result();
+        return $classes;
     }
- 
+     
     /*
         Store the record in the database
     */
     public function store()
-    {    
+    {            
         $data = $this->getData ();
- 
-        $result = $this->db->insert('students', $data);
+
+        $result = $this->db->insert('classes', $data);
         return $result;
     }
- 
+
     /*
         Get an specific record from the database
     */
     public function get($id)
     {
-        $result = $this->db->get_where('students', ['id' => $id ])->row();
+        $result = $this->db->get_where('classes', ['id' => $id ])->row();
         return $result;
     }
- 
- 
+
     /*
         Update or Modify a record in the database
     */
@@ -46,29 +45,27 @@ class Student_model extends CI_Model{
     {
         $data = $this->getData ();
  
-        $result = $this->db->where('id',$id)->update('students',$data);
+        $result = $this->db->where('id',$id)->update('classes',$data);
         return $result;
                  
     }
- 
+
     /*
         Destroy or Remove a record in the database
     */
     public function delete($id)
     {
-        $result = $this->db->delete('students', array('id' => $id));
+        $result = $this->db->delete('classes', array('id' => $id));
         return $result;
     }
 
     public function getData () {
         return $data = [
-            'name' => $this->input->post('name'),
-            'date' => $this->input->post('date'),
-            'address' => $this->input->post('address'),
-            'responsible' => $this->input->post('responsible'),
-            'contact' => $this->input->post('contact'),
+            'serie' => $this->input->post('serie'),
+            'shift' => $this->input->post('shift'),
+            'room' => $this->input->post('room'),
+            'vacancies' => $this->input->post('vacancies'),
         ];
     }
-     
 }
 ?>

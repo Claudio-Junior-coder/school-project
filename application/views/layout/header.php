@@ -21,7 +21,7 @@
                     </a>
                     <a
                         class="btn btn-outline-info"
-                        href="<?php echo base_url('/') ?>"> 
+                        href="<?php echo base_url('/classes') ?>"> 
                         Turmas
                     </a>
                     <a

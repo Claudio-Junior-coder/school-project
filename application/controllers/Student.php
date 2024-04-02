@@ -110,14 +110,19 @@ class Student extends CI_Controller {
   public function delete($id)
   {
     $item = $this->student->delete($id);
-    $this->session->set_flashdata('success', "Excluído com sucesso!");
+    if($item) {
+        $this->session->set_flashdata('success', "Excluído com sucesso!");
+    } else {
+        $this->session->set_flashdata('errors', 'Erro ao excluir.');
+    }
     redirect(base_url('student'));
   }
 
   /* 
     Validate From
   */
-  public function validateForm () {
+  public function validateForm () 
+  {
     $this->form_validation->set_rules('name', 'Nome', 'required');
     $this->form_validation->set_rules('date', 'Data de Nascimento', 'required');
     $this->form_validation->set_rules('address', 'Endereço', 'required');
