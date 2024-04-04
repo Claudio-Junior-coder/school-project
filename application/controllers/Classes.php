@@ -26,6 +26,20 @@ class Classes extends CI_Controller {
         $this->load->view('layout/footer');
     }
 
+    /* get all record */
+  public function get() {
+
+    if ($this->input->is_ajax_request()) {
+
+        $classes = $this->classes->get_all();
+       
+        echo json_encode($classes);
+
+    } else {
+        show_404(); 
+    }
+}
+
     /*
  
         Display a record
@@ -111,7 +125,10 @@ class Classes extends CI_Controller {
     public function delete($id)
     {
         $item = $this->classes->delete($id);
+
         if($item) {
+            $this->load->model('Student_in_class_model', 'inclasses');
+            $this->inclasses->deleteAllByClassId($id);
             $this->session->set_flashdata('success', "Excluído com sucesso!");
         } else {
             $this->session->set_flashdata('errors', 'Erro ao excluir.');

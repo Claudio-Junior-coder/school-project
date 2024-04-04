@@ -17,6 +17,14 @@ class Student_model extends CI_Model{
         $students = $this->db->get("students")->result();
         return $students;
     }
+
+    /* Search by student */
+    public function search($search) {
+
+        $query = $this->db->select('*')->from('students')->where("name ILIKE '%$search%'")->get()->result_array();
+
+        return $query;
+    }
  
     /*
         Store the record in the database

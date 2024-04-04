@@ -20,6 +20,8 @@ class Auth_model extends CI_Model {
         if (!isset($logged) || $logged != true) {
             redirect('login');
         }
+
+        return true;
     }
 
     function logout() {

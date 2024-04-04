@@ -24,6 +24,22 @@ class Student extends CI_Controller {
     $this->load->view('student/index',$data);
     $this->load->view('layout/footer');
   }
+
+  /* Search by a record */
+  public function search() {
+
+      if ($this->input->is_ajax_request()) {
+
+          $search = $this->input->get('search');
+
+          $students = $this->student->search($search);
+         
+          echo json_encode($students);
+
+      } else {
+          show_404(); 
+      }
+  }
  
   /*
  
@@ -111,6 +127,8 @@ class Student extends CI_Controller {
   {
     $item = $this->student->delete($id);
     if($item) {
+        $this->load->model('Student_in_class_model', 'inclasses');
+        $this->inclasses->deleteByStudentId($id);
         $this->session->set_flashdata('success', "Excluído com sucesso!");
     } else {
         $this->session->set_flashdata('errors', 'Erro ao excluir.');

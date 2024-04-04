@@ -61,6 +61,7 @@ $route['logout'] = "auth/logout";
 
 //Students
 $route['student'] = "student/index";
+$route['student/search'] = "student/search";
 $route['student/create'] = "student/create";
 $route['student/store']['post'] = "student/store";
 $route['student/edit/(:num)'] = "student/edit/$1";
@@ -69,8 +70,12 @@ $route['student/delete/(:num)']['delete'] = "student/delete/$1";
 
 //Classes
 $route['classes'] = "classes/index";
+$route['classes/get'] = "classes/get";
 $route['classes/create'] = "classes/create";
 $route['classes/store']['post'] = "classes/store";
 $route['classes/edit/(:num)'] = "classes/edit/$1";
 $route['classes/update/(:num)']['put'] = "classes/update/$1";
 $route['classes/delete/(:num)']['delete'] = "classes/delete/$1";
+
+//Students in classes
+$route['in/classes/store'] = "Inclasses/store";

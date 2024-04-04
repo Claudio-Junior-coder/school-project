@@ -39,6 +39,16 @@ class Classes_model extends CI_Model{
     }
 
     /*
+        Get an specific record from the database by class_id
+    */
+    public function getByClassIdVacancies($id)
+    {
+        $this->db->select('vacancies');
+        $result = $this->db->get_where('classes', ['id' => $id ])->row();
+        return $result;
+    }
+
+    /*
         Update or Modify a record in the database
     */
     public function update($id) 

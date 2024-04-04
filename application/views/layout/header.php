@@ -24,12 +24,26 @@
                         href="<?php echo base_url('/classes') ?>"> 
                         Turmas
                     </a>
-                    <a
+                    <a  id="student_in_classes"
                         class="btn btn-outline-info"
-                        href="<?php echo base_url('/') ?>"> 
+                        href="javascript:void(0);"> 
                         Enturmar
                     </a>
                 </div>
             </div>
         </div>
     <?php } ?>      
+    <div class="mt-3 mb-3">
+        <?php if ($this->session->flashdata('inclassError')) {?>
+            <div class="alert alert-danger">
+                <?php echo $this->session->flashdata('inclassError'); ?>
+            </div>
+        <?php } ?>
+        
+        <?php if ($this->session->flashdata('inclassSuccess')) {?>
+            <div class="alert alert-success">
+                <?php echo $this->session->flashdata('inclassSuccess'); ?>
+            </div>
+        <?php } ?>
+    </div>
+    <?php $this->load->view('layout/modal.php');?>

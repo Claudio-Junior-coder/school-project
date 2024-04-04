@@ -5,13 +5,12 @@
             Criar Novo Aluno
         </a>
     </div>
-    <div class="card-body">
+    <div class="card-body">        
         <?php if ($this->session->flashdata('success')) {?>
             <div class="alert alert-success">
                 <?php echo $this->session->flashdata('success'); ?>
             </div>
         <?php } ?>
- 
         <table class="table table-bordered">
             <tr>
                 <th>Nome</th>
@@ -45,3 +44,4 @@
         </table>
     </div>
 </div>
+
