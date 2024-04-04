@@ -32,7 +32,7 @@
                     </a>
                     <a  id="generate-pdf"
                         class="btn btn-outline-info"
-                        href="<?php echo base_url('/in/classes/report') ?>"> 
+                        href="<?php echo base_url('/in/classes/report') ?>" target="_blank"> 
                         Baixar Relatório
                     </a>
                 </div>

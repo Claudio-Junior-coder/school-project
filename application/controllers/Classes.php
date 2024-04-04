@@ -12,7 +12,7 @@ class Classes extends CI_Controller {
         $this->load->library('session');
         $this->load->model('Classes_model', 'classes');
    
-     }
+    }
  
      /*
         Display all records in page
@@ -27,21 +27,20 @@ class Classes extends CI_Controller {
     }
 
     /* get all record */
-  public function get() {
+    public function get() {
 
-    if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) {
 
-        $classes = $this->classes->get_all();
-       
-        echo json_encode($classes);
+            $classes = $this->classes->get_all();
+        
+            echo json_encode($classes);
 
-    } else {
-        show_404(); 
+        } else {
+            show_404(); 
+        }
     }
-}
 
     /*
- 
         Display a record
     */
     public function show($id)
@@ -84,14 +83,13 @@ class Classes extends CI_Controller {
         {
             $this->session->set_flashdata('errors', 'Preencha todos os campos.');
             redirect(base_url('classes/create'));
+
+            return false;
         }
-        else
-        {
+        
         $this->classes->store();
         $this->session->set_flashdata('success', "Criado com Sucesso!");
         redirect(base_url('classes'));
-        }
-    
     }
 
     /*
@@ -118,13 +116,12 @@ class Classes extends CI_Controller {
         {
             $this->session->set_flashdata('errors', 'Preencha todos os campos.');
             redirect(base_url('classes/edit/' . $id));
+            return false;
         }
-        else
-        {
+
         $this->classes->update($id);
         $this->session->set_flashdata('success', "Atualizado com Sucesso!");
         redirect(base_url('classes'));
-        }
     
     }
     

@@ -77,13 +77,11 @@ class Student extends CI_Controller {
     {
         $this->session->set_flashdata('errors', 'Preencha todos os campos.');
         redirect(base_url('student/create'));
+        return false;
     }
-    else
-    {
-       $this->student->store();
-       $this->session->set_flashdata('success', "Criado com Sucesso!");
-       redirect(base_url('student'));
-    }
+      $this->student->store();
+      $this->session->set_flashdata('success', "Criado com Sucesso!");
+      redirect(base_url('student'));
  
   }
  
@@ -111,13 +109,12 @@ class Student extends CI_Controller {
     {
         $this->session->set_flashdata('errors', 'Preencha todos os campos.');
         redirect(base_url('student/edit/' . $id));
+        return false;
     }
-    else
-    {
-       $this->student->update($id);
-       $this->session->set_flashdata('success', "Atualizado com Sucesso!");
-       redirect(base_url('student'));
-    }
+    
+    $this->student->update($id);
+    $this->session->set_flashdata('success', "Atualizado com Sucesso!");
+    redirect(base_url('student'));
  
   }
  

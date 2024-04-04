@@ -101,15 +101,20 @@ class Inclasses extends CI_Controller {
         $pdf->AddPage();
         $pdf->SetFont('Arial','B',12);
         foreach($data as $item) {
-            // Header
+         
             $pdf->Cell(190,7,'Turma: '. $item['class']->serie . ' | ' . $item['class']->shift . ' | ' . $item['class']->room, 1);
             $pdf->Ln();
-            // Data
-            foreach($item['students'] as $row)
-            {
-                $pdf->Cell(190,6,$row->name, 1);
+         
+            if(isset($item['students'])) {
+                foreach($item['students'] as $row)
+                {
+                    $pdf->Cell(190,6,$row->name, 1);
+                    $pdf->Ln();
+                }
+            } else {
+                $pdf->Cell(190,6,'Nenhum aluno nesta turma.', 1);
                 $pdf->Ln();
-            }
+            }           
             
             $pdf->Ln();
         }
