@@ -60,6 +60,20 @@ class Inclasses extends CI_Controller {
     
     }
 
+    /*
+    Delete a student from class
+  */
+  public function delete($id)
+  {
+    $item = $this->inclasses->deleteByStudentId($id);
+    if($item) {
+        $this->session->set_flashdata('successUnclass', "Aluno desenturmado com sucesso!");
+    } else {
+        $this->session->set_flashdata('errorsUnclass', 'Erro ao desenturmar aluno.');
+    }
+    redirect($this->agent->referrer());
+  }
+
     /* 
         Validate From
     */

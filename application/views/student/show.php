@@ -16,5 +16,13 @@
        <p><?php echo $student->responsible;?></p>
        <b class="text-muted">Contato:</b>
        <p><?php echo $student->contact;?></p>
+       <b class="text-muted">Enturmado:</b>
+       <p>
+        <?php if(!isset($class['class'])) {
+            echo $class['inclass'];
+        } else {
+            echo $class['class']->serie . ' | ' . $class['class']->room . ' | ' . $class['class']->shift;
+        } ?>
+       </p>
     </div>
 </div>

@@ -49,6 +49,7 @@ class Student extends CI_Controller {
   {
     $data['student'] = $this->student->get($id);
     $data['title'] = "Exibindo Aluno";
+    $data['class'] = $this->studentInClass($id);
     $this->load->view('layout/header');
     $this->load->view('student/show', $data);
     $this->load->view('layout/footer'); 
@@ -148,5 +149,22 @@ class Student extends CI_Controller {
     $this->form_validation->set_rules('contact', 'Contato', 'required');
   }
  
+  /* Check if stundent is in class */
+  public function studentInClass ($id) 
+  {
+    $this->load->model('Student_in_class_model', 'inclasses');
+    $this->load->model('Classes_model', 'classes');
+
+    $inClass = $this->inclasses->getByStudentId($id);
+
+    $data = [];    
+    $inClass ? $data['inclass'] = 'Sim' : $data['inclass'] = 'Não';
+
+    if($inClass) {
+      $data['class'] = $this->classes->get($inClass->class_id);
+    }
+    
+    return $data;
+  }
  
 }

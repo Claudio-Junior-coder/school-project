@@ -48,6 +48,15 @@ class Student_in_class_model extends CI_Model{
     }
 
     /*
+        Get an specific record from the database
+    */
+    public function getAllByClassId($id)
+    {
+        $result = $this->db->get_where('student_in_class', ['class_id' => $id ])->result();
+        return $result;
+    }
+
+    /*
         Get an specific record from the database by student_id
     */
     public function getByStudentId($id)

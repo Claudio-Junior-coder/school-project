@@ -79,3 +79,4 @@ $route['classes/delete/(:num)']['delete'] = "classes/delete/$1";
 
 //Students in classes
 $route['in/classes/store'] = "Inclasses/store";
+$route['in/classes/unclass/(:num)'] = "Inclasses/delete/$1";

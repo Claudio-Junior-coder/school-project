@@ -48,6 +48,15 @@ class Classes extends CI_Controller {
     {
         $data['classe'] = $this->classes->get($id);
         $data['title'] = "Exibindo Turma";
+
+        $this->load->model('Student_in_class_model', 'inclasses');
+        $classes = $this->inclasses->getAllByClassId($id);
+        $data['students_in_class'] = $classes ? count($classes) : 0;
+        foreach($classes as $class) {
+            $this->load->model('Student_model', 'students');
+            $data['students'][] = $this->students->get($class->student_id);
+        }
+
         $this->load->view('layout/header');
         $this->load->view('classes/show', $data);
         $this->load->view('layout/footer'); 
